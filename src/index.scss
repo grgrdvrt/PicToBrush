@@ -1,0 +1,46 @@
+:root {
+    --active-color: #FFB72A;
+}
+
+$breakpoint-mobile:480px;
+$breakpoint-tablet:768px;
+
+html, body{
+    width:100%;
+    height:100%;
+    padding:0;
+    margin:0;
+    overflow:hidden;
+    -webkit-user-select:none;
+    user-select:none;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root{
+    width:100%;
+    height:100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.picto{
+    max-height:100%;
+    width:90%;
+  &:hover{
+    fill:var(--active-color);
+  }
+}
+
+@import "./gui/tools/_slider.scss";
+
