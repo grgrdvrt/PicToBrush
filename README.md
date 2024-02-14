@@ -1,4 +1,4 @@
-![PicToBrush Screenshot](./pictobrush_screenshot.png)
+![PicToBrush Screenshot](./pictobrush_screenshot.jpg)
 
 Run the app in the development mode with `npm dev`
 
