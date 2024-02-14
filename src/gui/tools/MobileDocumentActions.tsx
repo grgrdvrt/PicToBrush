@@ -63,6 +63,7 @@ export function MobileDocumentActions(){
                     <button aria-label="undo" onClick={undo} disabled={!canUndo()}><UndoPicto/></button>
                     <button aria-label="redo" onClick={redo} disabled={!canRedo()}><RedoPicto/></button>
                     <button aria-label="clear" onClick={clear}><ClearPicto/></button>
+                    <button aria-label="download" onClick={downloadCanvas}><DownloadPicto/></button>
                 </div>
             </Show>
             <Infos visible={infosVisible} closeInfos={closeInfos}/>
