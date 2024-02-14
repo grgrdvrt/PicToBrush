@@ -97,7 +97,6 @@ export function DrawingCanvas(){
         ctx.drawImage(undoStack[store.undoIndex - 1], 0, 0);
     }));
 
-    const pts:number[] = [];
 
     onMount(() => {
         const ctx = canvas.getContext("2d")!;
@@ -119,7 +118,6 @@ export function DrawingCanvas(){
             const deviceScale = isMobile() ? 0.65 : 1;
             const scale = deviceScale;
 
-            pts.push(p.x, p.y);
             const count = store.lineSettings.rotations;
             const dx = p.x - last.x;
             const dy = p.y - last.y;
@@ -182,7 +180,6 @@ export function DrawingCanvas(){
                 if(e.button !== 0) return;
                 setStore("isDrawing", false)
                 save();
-                console.log(JSON.stringify(pts))
             }}
         />
     );
