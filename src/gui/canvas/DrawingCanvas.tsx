@@ -59,6 +59,7 @@ export function DrawingCanvas(){
     let p = new Vector2();
     let ink = 0;
     let lastAngle = 0;
+    let pressure = 0;
 
     const resizeObserver = new ResizeObserver(() => {
         const ctx = canvas.getContext("2d")!;
@@ -143,7 +144,7 @@ export function DrawingCanvas(){
                 scale,
                 angle,
                 brushSize(),
-                size(),
+                pressure * size(),
                 canvasSize
 
             );
@@ -173,6 +174,7 @@ export function DrawingCanvas(){
 
             onPointerMove={(e) => {
                 e.preventDefault();
+                pressure = e.force || 0.8;
                 p.set(e.clientX, e.clientY);
             }}
             onPointerUp={(e) => {
