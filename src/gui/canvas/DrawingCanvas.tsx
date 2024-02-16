@@ -165,7 +165,7 @@ export function DrawingCanvas(){
             onPointerDown={(e) => {
                 e.preventDefault();
                 if(e.button !== 0) return;
-                pressure = e.pressure ?? 0.5;
+                pressure = e.pressure || 0.5;
                 ink = store.lineSettings.opacity;
 
                 setStore("isDrawing", true);
@@ -176,7 +176,7 @@ export function DrawingCanvas(){
 
             onPointerMove={(e) => {
                 e.preventDefault();
-                pressure = e.pressure ?? 0.5;
+                pressure = e.pressure || 0.5;
                 p.set(e.clientX, e.clientY);
             }}
             onPointerUp={(e) => {
