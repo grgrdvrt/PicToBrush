@@ -59,7 +59,7 @@ export function DrawingCanvas(){
     let p = new Vector2();
     let ink = 0;
     let lastAngle = 0;
-    let pressure = 0;
+    let pressure = 0.5;
 
     const resizeObserver = new ResizeObserver(() => {
         const ctx = canvas.getContext("2d")!;
@@ -131,6 +131,7 @@ export function DrawingCanvas(){
             }
             const reflectionCount = store.lineSettings.mirror ? 2 : 1;
             const opacity = (store.lineSettings.opacity ** 2) * 0.995 + 0.005;
+            console.log(pressure)
             drawSegment(
                 ctx,
                 brushCanvas,
@@ -164,6 +165,7 @@ export function DrawingCanvas(){
             onPointerDown={(e) => {
                 e.preventDefault();
                 if(e.button !== 0) return;
+                pressure = e.pressure ?? 0.5;
                 ink = store.lineSettings.opacity;
 
                 setStore("isDrawing", true);
@@ -174,7 +176,7 @@ export function DrawingCanvas(){
 
             onPointerMove={(e) => {
                 e.preventDefault();
-                pressure = e.force || 0.8;
+                pressure = e.pressure ?? 0.5;
                 p.set(e.clientX, e.clientY);
             }}
             onPointerUp={(e) => {

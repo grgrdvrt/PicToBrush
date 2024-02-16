@@ -104,7 +104,7 @@ export function AppProvider(props:{children:JSXElement[]|JSXElement}) {
         currentBrushId:defaultBrushes[0].id,
         isDrawing:false,
         lineSettings:{
-            size:125,
+            size:200,
             opacity:0.3,
             twist:0.5,
             rotations:1,
