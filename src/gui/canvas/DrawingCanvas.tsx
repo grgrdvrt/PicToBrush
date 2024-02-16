@@ -176,7 +176,7 @@ export function DrawingCanvas(){
 
             onPointerMove={(e) => {
                 e.preventDefault();
-                pressure = pressure + 0.5 * (pressure - (e.pressure || 0.5));
+                pressure = pressure + 0.5 * ((e.pressure || 0.5) - pressure);
                 p.set(e.clientX, e.clientY);
             }}
             onPointerUp={(e) => {
