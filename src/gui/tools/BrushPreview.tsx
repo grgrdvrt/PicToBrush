@@ -85,6 +85,8 @@ export function BrushPreview(){
                 angle,
                 _brushSize,
                 _size,
+                0.5,
+                0.5,
                 canvasSize
             );
             lastAngle = angle;
