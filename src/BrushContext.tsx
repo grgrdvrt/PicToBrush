@@ -9,6 +9,7 @@ import {
 import { BrushSettings, useAppContext } from "./AppContext";
 
 import { updateBrushCanvas } from "./utils/drawing";
+import { checkIsMobile } from "./utils";
 
 
 
@@ -68,7 +69,7 @@ export function BrushProvider(props:{children:JSXElement[]|JSXElement}) {
         return store.lineSettings.size;
     }
     const size = () => {
-        return brushSize();
+        return (checkIsMobile() ? 0.5 : 1) * brushSize();
     }
 
     img.onload = () => {

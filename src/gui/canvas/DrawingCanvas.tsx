@@ -59,6 +59,8 @@ export function DrawingCanvas(){
     let p = new Vector2();
     let ink = 0;
     let lastAngle = 0;
+    let pressure = 0.5;
+    let lastPressure = 0.5;
 
     const resizeObserver = new ResizeObserver(() => {
         const ctx = canvas.getContext("2d")!;
@@ -144,11 +146,14 @@ export function DrawingCanvas(){
                 angle,
                 brushSize(),
                 size(),
+                pressure,
+                lastPressure,
                 canvasSize
 
             );
             /* ink *= 0.98; */
             lastAngle = angle;
+            lastPressure = pressure;
             last.copy(p);
         }
         update();
@@ -163,6 +168,7 @@ export function DrawingCanvas(){
             onPointerDown={(e) => {
                 e.preventDefault();
                 if(e.button !== 0) return;
+                lastPressure = pressure = e.pressure || 0.5;
                 ink = store.lineSettings.opacity;
 
                 setStore("isDrawing", true);
@@ -173,6 +179,7 @@ export function DrawingCanvas(){
 
             onPointerMove={(e) => {
                 e.preventDefault();
+                pressure = e.pressure || 0.5;
                 p.set(e.clientX, e.clientY);
             }}
             onPointerUp={(e) => {
