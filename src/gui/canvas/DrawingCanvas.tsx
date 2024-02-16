@@ -132,7 +132,6 @@ export function DrawingCanvas(){
             }
             const reflectionCount = store.lineSettings.mirror ? 2 : 1;
             const opacity = (store.lineSettings.opacity ** 2) * 0.995 + 0.005;
-            console.log(pressure)
             drawSegment(
                 ctx,
                 brushCanvas,
