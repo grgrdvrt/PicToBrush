@@ -70,8 +70,6 @@ export function drawSegment(
     angle:number,
     brushSize:number,
     size:number,
-    pressure:number,
-    lastPressure:number,
     canvasSize:Rect
 ){
 
@@ -83,18 +81,17 @@ export function drawSegment(
             for(let j = 0; j < count; j++){
 
                 ctx.transform(...rotationTransform);
-                // const t = steps === 1 ? 1 : i / (steps - 1);
-                const t = steps === 1 ? 1 : i / steps;
-                const px = lerp(last.x, p.x, t);
-                const py = lerp(last.y, p.y, t);
-                ctx.save();
-                ctx.globalAlpha = opacity;
-                ctx.translate(px, py);
-                ctx.scale(scale, scale);
-                ctx.rotate(lerp(lastAngle, angle, t));
-                const pressuredSize = size * lerp(lastPressure, pressure, t);
-                ctx.drawImage(brushCanvas, 0, 0, brushSize, brushSize, -0.5 * pressuredSize, -0.5 * pressuredSize, pressuredSize, pressuredSize);
-                ctx.restore();
+                    // const t = steps === 1 ? 1 : i / (steps - 1);
+                    const t = steps === 1 ? 1 : i / steps;
+                    const px = lerp(last.x, p.x, t);
+                    const py = lerp(last.y, p.y, t);
+                    ctx.save();
+                    ctx.globalAlpha = opacity;
+                    ctx.translate(px, py);
+                    ctx.scale(scale, scale);
+                    ctx.rotate(lerp(lastAngle, angle, t));
+                    ctx.drawImage(brushCanvas, 0, 0, brushSize, brushSize, -0.5 * size, -0.5 * size, size, size);
+                    ctx.restore();
             }
             ctx.transform(...reflectionTransform);
         }
